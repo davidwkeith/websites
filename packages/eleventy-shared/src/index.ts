@@ -18,6 +18,10 @@ import { registerDateFilters } from "./config/date-filters.ts";
 import { registerShortcodes } from "./config/shortcodes.ts";
 import { registerBundles } from "./config/bundles.ts";
 import { registerSchemaValidation } from "./config/schema-validation.ts";
+import { registerImages } from "./config/images.ts";
+import { registerMarkdown } from "./config/markdown.ts";
+import { registerContentFilters } from "./config/content-filters.ts";
+import { registerPostcss } from "./config/postcss.ts";
 
 export type { SharedPluginOptions } from "./types.ts";
 
@@ -57,6 +61,22 @@ export default function sharedPlugin(
   }
   if (!options.disableConfig?.schemaValidation) {
     registerSchemaValidation(eleventyConfig);
+  }
+  if (!options.disableConfig?.images) {
+    registerImages(eleventyConfig);
+  }
+  if (!options.disableConfig?.markdown) {
+    registerMarkdown(eleventyConfig);
+  }
+  if (!options.disableConfig?.contentFilters) {
+    registerContentFilters(eleventyConfig);
+  }
+
+  // Opt-in config registrations (require additional peer deps).
+  // postcss.ts lazy-loads its deps inside the transform handler,
+  // so the static import here is safe even without postcss installed.
+  if (options.enableConfig?.postcss) {
+    registerPostcss(eleventyConfig);
   }
 
   // Virtual template registrations

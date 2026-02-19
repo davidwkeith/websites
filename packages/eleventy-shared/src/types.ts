@@ -86,5 +86,14 @@ export interface SharedPluginOptions {
     shortcodes?: boolean;
     bundles?: boolean;
     schemaValidation?: boolean;
+    images?: boolean;
+    markdown?: boolean;
+    contentFilters?: boolean;
+  };
+
+  /** Enable opt-in config registrations (require additional peer deps). */
+  enableConfig?: {
+    /** Enable PostCSS transform for .css outputs. Requires postcss + postcss-load-config. */
+    postcss?: boolean;
   };
 }

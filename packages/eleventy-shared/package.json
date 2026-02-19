@@ -12,9 +12,13 @@
     "ajv": "^8.17.0"
   },
   "peerDependencies": {
+    "@11ty/eleventy-img": "^6.0.0",
     "cheerio": "^1.0.0",
     "html-minifier-terser": "^7.0.0",
-    "openpgp": "^6.0.0"
+    "markdown-it": "^14.0.0",
+    "openpgp": "^6.0.0",
+    "postcss": "^8.0.0",
+    "postcss-load-config": "^6.0.0"
   },
   "devDependencies": {
     "typescript": "^5.9.3"
