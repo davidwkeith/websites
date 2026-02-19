@@ -1,6 +1,6 @@
 [submodule "sites/dwk.io"]
 	path = sites/dwk.io
-	url = git@gitlab.com:dwk-io/dwk.io.git
+	url = git@github.com:davidwkeith/dwk.io.git
 [submodule "sites/pulletsforever.com"]
 	path = sites/pulletsforever.com
 	url = git@gitlab.com:dwk-io/pulletsforever.com.git
