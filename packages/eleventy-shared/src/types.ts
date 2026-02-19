@@ -85,5 +85,6 @@ export interface SharedPluginOptions {
     dateFilters?: boolean;
     shortcodes?: boolean;
     bundles?: boolean;
+    schemaValidation?: boolean;
   };
 }

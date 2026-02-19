@@ -8,6 +8,9 @@
     "./worker": "./src/worker/index.ts",
     "./postbuild": "./src/postbuild/index.ts"
   },
+  "dependencies": {
+    "ajv": "^8.17.0"
+  },
   "peerDependencies": {
     "cheerio": "^1.0.0",
     "html-minifier-terser": "^7.0.0",

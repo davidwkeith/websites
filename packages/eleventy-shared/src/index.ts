@@ -17,6 +17,7 @@ import { registerHtmlMinifier } from "./config/html-minifier.ts";
 import { registerDateFilters } from "./config/date-filters.ts";
 import { registerShortcodes } from "./config/shortcodes.ts";
 import { registerBundles } from "./config/bundles.ts";
+import { registerSchemaValidation } from "./config/schema-validation.ts";
 
 export type { SharedPluginOptions } from "./types.ts";
 
@@ -53,6 +54,9 @@ export default function sharedPlugin(
   }
   if (!options.disableConfig?.bundles) {
     registerBundles(eleventyConfig);
+  }
+  if (!options.disableConfig?.schemaValidation) {
+    registerSchemaValidation(eleventyConfig);
   }
 
   // Virtual template registrations
