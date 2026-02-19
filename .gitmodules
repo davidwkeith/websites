@@ -3,4 +3,4 @@
 	url = git@github.com:davidwkeith/dwk.io.git
 [submodule "sites/pulletsforever.com"]
 	path = sites/pulletsforever.com
-	url = git@gitlab.com:dwk-io/pulletsforever.com.git
+	url = git@github.com:davidwkeith/pulletsforever.com.git
