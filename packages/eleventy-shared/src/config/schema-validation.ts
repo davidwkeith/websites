@@ -59,11 +59,13 @@ function findNestedTypedObjects(
 }
 
 /**
- * Registers the `getSchema` JavaScript function for build-time
+ * Registers the `getSchema` shortcode for build-time
  * Schema.org JSON-LD validation using ajv.
+ *
+ * Available in all template engines (Nunjucks, WebC, JavaScript, Liquid).
  */
 export function registerSchemaValidation(eleventyConfig: any): void {
-  eleventyConfig.addJavaScriptFunction("getSchema", (schema: unknown) => {
+  eleventyConfig.addShortcode("getSchema", (schema: unknown) => {
     const errors: string[] = [];
 
     if (!rootSchema(schema)) {
