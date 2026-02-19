@@ -5,9 +5,10 @@ Static sites built with [Eleventy](https://www.11ty.dev/) and deployed on [Cloud
 ## Structure
 
 ```
-packages/eleventy-shared/        Shared Eleventy plugin and Worker utilities
+packages/eleventy-shared/        Shared Eleventy plugin, Worker utilities, and post-build tools
 sites/dwk.io/                    Personal portfolio — dwk.io
 sites/pulletsforever.com/        Blog — pulletsforever.com
+sites/crontab.dwk.io/            Cron schedule reference — crontab.dwk.io
 ```
 
 ## Setup
@@ -18,11 +19,11 @@ Requires Node 22+ (see `.nvmrc`).
 npm install
 ```
 
-This installs all dependencies for both sites and the shared package via npm workspaces.
+This installs all dependencies for all sites and the shared package via npm workspaces.
 
 ## Development
 
-Each site has its own commands — run them from the site directory:
+Each site is a git submodule with its own commands — run them from the site directory:
 
 ```sh
 cd sites/dwk.io
@@ -33,20 +34,25 @@ npm test            # Worker tests
 cd sites/pulletsforever.com
 npm start           # Dev server
 npm run build       # Production build
+
+cd sites/crontab.dwk.io
+npm start           # Dev server
+npm run build       # Production build
 ```
 
 ## Shared Package
 
-`@dwk/eleventy-shared` provides:
+`@dwk/eleventy-shared` provides three entry points:
 
-- **Eleventy plugin** — virtual templates for `.well-known/gpc.json`, `security.txt`, `sitemap.xml`, `humans.txt`, `robots.txt`, and `404.html`, plus config for TypeScript extensions, HTML minification, date filters, shortcodes, and CSS/JS bundles
-- **Worker utilities** — common security headers, redirect handling, and path matching
+- **Eleventy plugin** (`@dwk/eleventy-shared`) — virtual templates for `.well-known/gpc.json`, `security.txt`, `sitemap.xml`, `humans.txt`, `robots.txt`, and `404.html`, plus opt-in templates for `webfinger`, `host-meta`, `nostr.json`, `did.json`, `atproto-did`, and `dnt-policy.txt`. Config includes TypeScript extensions, HTML minification, date filters, shortcodes, and CSS/JS bundles.
+- **Worker utilities** (`@dwk/eleventy-shared/worker`) — common security headers, redirect handling, path matching, and `createWorkerHandler()` factory for standard Worker request pipelines.
+- **Post-build utilities** (`@dwk/eleventy-shared/postbuild`) — SRI hash injection for local stylesheets/scripts and OpenPGP signing for `security.txt`.
 
 Sites configure the plugin with their own URLs, permalinks, and feature flags. See each site's `eleventy.config.ts`.
 
 ## security.txt Signing
 
-Both sites can sign `/.well-known/security.txt` with an OpenPGP cleartext signature per [RFC 9116 Section 2.3](https://www.rfc-editor.org/rfc/rfc9116#section-2.3). To enable, set in `.env` or CI:
+Sites can sign `/.well-known/security.txt` with an OpenPGP cleartext signature per [RFC 9116 Section 2.3](https://www.rfc-editor.org/rfc/rfc9116#section-2.3). To enable, set in `.env` or CI:
 
 ```sh
 GPG_PRIVATE_KEY="-----BEGIN PGP PRIVATE KEY BLOCK-----

@@ -12,9 +12,10 @@ Monorepo containing multiple Eleventy (11ty) v3 static sites and a shared infras
 packages/eleventy-shared/   Shared Eleventy plugin + Worker utilities (@dwk/eleventy-shared)
 sites/dwk.io/               Personal portfolio site
 sites/pulletsforever.com/    Blog
+sites/crontab.dwk.io/       Cron schedule reference site
 ```
 
-npm workspaces link everything — `npm install` from the root.
+Each site is a git submodule. npm workspaces link everything — `npm install` from the root.
 
 ## Tech Stack
 
@@ -25,10 +26,14 @@ npm workspaces link everything — `npm install` from the root.
 
 ## Shared Package (`@dwk/eleventy-shared`)
 
-Exports `.ts` files directly (no compile step). Two entry points:
+Exports `.ts` files directly (no compile step). Three entry points:
 
-- `@dwk/eleventy-shared` — Eleventy plugin registering virtual templates (GPC, security.txt, sitemap, humans.txt, robots.txt, 404) and config (TypeScript extensions, HTML minification, date filters, shortcodes, CSS/JS bundles). Sites pass options for URLs, permalinks, and feature flags.
-- `@dwk/eleventy-shared/worker` — Worker utilities: `COMMON_SECURITY_HEADERS`, `matchesPattern()`, `applyHeaderRules()`, `handleRedirects()`, `handleWwwRedirect()`, plus `Redirect` and `HeaderRule` types.
+- `@dwk/eleventy-shared` — Eleventy plugin registering virtual templates and config. Sites pass options for URLs, permalinks, and feature flags.
+  - **Default templates:** GPC, security.txt, sitemap, humans.txt, robots.txt, 404.
+  - **Opt-in `.well-known` templates:** webfinger, host-meta, nostr.json, did.json, atproto-did, dnt-policy.txt — each registers only when its config option is provided.
+  - **Config:** TypeScript extensions, HTML minification (production only), date filters, shortcodes (`currentBuildDate`, `expiryDate`), CSS/JS bundles.
+- `@dwk/eleventy-shared/worker` — Worker utilities: `COMMON_SECURITY_HEADERS`, `matchesPattern()`, `applyHeaderRules()`, `handleRedirects()`, `handleWwwRedirect()`, `createWorkerHandler()`, plus `Redirect` and `HeaderRule` types. `createWorkerHandler()` is a factory that chains www redirect → path redirects → optional `before` middleware → static asset fetch → header rules.
+- `@dwk/eleventy-shared/postbuild` — Post-build utilities: `addSriHashes()` injects SHA-384 integrity attributes on local stylesheets/scripts; `signSecurityTxt()` applies OpenPGP cleartext signatures per RFC 9116.
 
 ## Common Patterns
 
