@@ -4,3 +4,6 @@
 [submodule "sites/pulletsforever.com"]
 	path = sites/pulletsforever.com
 	url = git@github.com:davidwkeith/pulletsforever.com.git
+[submodule "sites/crontab.dwk.io"]
+	path = sites/crontab.dwk.io
+	url = git@github.com:davidwkeith/crontab.dwk.io.git
