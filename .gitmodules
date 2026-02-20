@@ -7,3 +7,9 @@
 [submodule "sites/crontab.dwk.io"]
 	path = sites/crontab.dwk.io
 	url = git@github.com:davidwkeith/crontab.dwk.io.git
+[submodule "sites/davidandshawna.us"]
+	path = sites/davidandshawna.us
+	url = git@github.com:davidwkeith/davidandshawna.us.git
+[submodule "sites/thekeithfamily.us"]
+	path = sites/thekeithfamily.us
+	url = git@github.com:davidwkeith/thekeithfamily.us.git
