@@ -19,6 +19,8 @@ sites/davidandshawna.us/     Family site
 
 Each site is a git submodule. npm workspaces link everything — `npm install` from the root. Sites can also install `@dwk/eleventy-shared` from npm for standalone development.
 
+**Submodule workflow:** When committing changes that touch submodules, commit inside each submodule first, then commit the monorepo to update submodule pointers. Push submodules before pushing the monorepo.
+
 ## Tech Stack
 
 - **Eleventy 3.x** with TypeScript, ES modules, and WebC components
@@ -28,7 +30,7 @@ Each site is a git submodule. npm workspaces link everything — `npm install` f
 
 ## Shared Package (`@dwk/eleventy-shared`)
 
-Published on [npm](https://www.npmjs.com/package/@dwk/eleventy-shared). Exports `.ts` files directly (no compile step). Three entry points:
+Published on [npm](https://www.npmjs.com/package/@dwk/eleventy-shared). Source is TypeScript; ships compiled JS with declarations (`npm run build` compiles `src/` → `dist/`). Three entry points:
 
 - `@dwk/eleventy-shared` — Eleventy plugin registering virtual templates and config. Sites pass options for URLs, permalinks, and feature flags.
   - **Default templates:** GPC, security.txt, sitemap, humans.txt, robots.txt, 404.

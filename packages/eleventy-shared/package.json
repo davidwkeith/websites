@@ -1,18 +1,31 @@
 {
   "name": "@dwk/eleventy-shared",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared Eleventy plugin, Cloudflare Worker utilities, and post-build tools",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./worker": "./src/worker/index.ts",
-    "./postbuild": "./src/postbuild/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./worker": {
+      "types": "./dist/worker/index.d.ts",
+      "default": "./dist/worker/index.js"
+    },
+    "./postbuild": {
+      "types": "./dist/postbuild/index.d.ts",
+      "default": "./dist/postbuild/index.js"
+    }
   },
   "files": [
-    "src/"
+    "dist/"
   ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=18.0.0"
   },
   "author": {
     "name": "David W. Keith",

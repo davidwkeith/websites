@@ -5,6 +5,8 @@
     "sites/*"
   ],
   "overrides": {
-    "sharp": "^0.34.3"
+    "sharp": "^0.34.3",
+    "minimatch": "10.2.2",
+    "nanoid": "5.1.6"
   }
 }

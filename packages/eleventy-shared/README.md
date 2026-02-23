@@ -2,7 +2,7 @@
 
 Shared [Eleventy](https://www.11ty.dev/) plugin, [Cloudflare Worker](https://developers.cloudflare.com/workers/) utilities, and post-build tools.
 
-Requires **Node 22+** — ships raw TypeScript via `--experimental-strip-types`.
+Requires **Node 18+**. Ships compiled JavaScript with TypeScript declarations.
 
 ## Install
 
@@ -34,7 +34,7 @@ export default function (eleventyConfig) {
 };
 ```
 
-See [`SharedPluginOptions`](./src/types.ts) for all options.
+See `SharedPluginOptions` in [`src/types.ts`](./src/types.ts) for all options.
 
 ### `@dwk/eleventy-shared/worker` — Worker Utilities
 
