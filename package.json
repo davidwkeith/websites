@@ -3,5 +3,8 @@
   "workspaces": [
     "packages/*",
     "sites/*"
-  ]
+  ],
+  "overrides": {
+    "sharp": "^0.34.3"
+  }
 }
