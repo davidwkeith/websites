@@ -1,13 +1,41 @@
 {
   "name": "@dwk/eleventy-shared",
   "version": "0.1.0",
-  "private": true,
+  "description": "Shared Eleventy plugin, Cloudflare Worker utilities, and post-build tools",
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
     "./worker": "./src/worker/index.ts",
     "./postbuild": "./src/postbuild/index.ts"
   },
+  "files": [
+    "src/"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "author": {
+    "name": "David W. Keith",
+    "email": "git@dwk.io",
+    "url": "https://dwk.io/"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidwkeith/websites.git",
+    "directory": "packages/eleventy-shared"
+  },
+  "homepage": "https://github.com/davidwkeith/websites/tree/main/packages/eleventy-shared",
+  "bugs": {
+    "url": "https://github.com/davidwkeith/websites/issues"
+  },
+  "keywords": [
+    "eleventy",
+    "eleventy-plugin",
+    "11ty",
+    "cloudflare-workers",
+    "static-site"
+  ],
   "dependencies": {
     "ajv": "^8.17.0"
   },
@@ -19,6 +47,15 @@
     "openpgp": "^6.0.0",
     "postcss": "^8.0.0",
     "postcss-load-config": "^6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@11ty/eleventy-img": { "optional": true },
+    "cheerio": { "optional": true },
+    "html-minifier-terser": { "optional": true },
+    "markdown-it": { "optional": true },
+    "openpgp": { "optional": true },
+    "postcss": { "optional": true },
+    "postcss-load-config": { "optional": true }
   },
   "devDependencies": {
     "typescript": "^5.9.3"

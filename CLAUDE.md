@@ -9,13 +9,15 @@ Monorepo containing multiple Eleventy (11ty) v3 static sites and a shared infras
 ## Structure
 
 ```
-packages/eleventy-shared/   Shared Eleventy plugin + Worker utilities (@dwk/eleventy-shared)
+packages/eleventy-shared/   Shared Eleventy plugin + Worker utilities (@dwk/eleventy-shared, published on npm)
 sites/dwk.io/               Personal portfolio site
 sites/pulletsforever.com/    Blog
 sites/crontab.dwk.io/       Cron schedule reference site
+sites/thekeithfamily.us/     Family site
+sites/davidandshawna.us/     Family site
 ```
 
-Each site is a git submodule. npm workspaces link everything — `npm install` from the root.
+Each site is a git submodule. npm workspaces link everything — `npm install` from the root. Sites can also install `@dwk/eleventy-shared` from npm for standalone development.
 
 ## Tech Stack
 
@@ -26,7 +28,7 @@ Each site is a git submodule. npm workspaces link everything — `npm install` f
 
 ## Shared Package (`@dwk/eleventy-shared`)
 
-Exports `.ts` files directly (no compile step). Three entry points:
+Published on [npm](https://www.npmjs.com/package/@dwk/eleventy-shared). Exports `.ts` files directly (no compile step). Three entry points:
 
 - `@dwk/eleventy-shared` — Eleventy plugin registering virtual templates and config. Sites pass options for URLs, permalinks, and feature flags.
   - **Default templates:** GPC, security.txt, sitemap, humans.txt, robots.txt, 404.

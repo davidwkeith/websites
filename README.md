@@ -9,6 +9,8 @@ packages/eleventy-shared/        Shared Eleventy plugin, Worker utilities, and p
 sites/dwk.io/                    Personal portfolio — dwk.io
 sites/pulletsforever.com/        Blog — pulletsforever.com
 sites/crontab.dwk.io/            Cron schedule reference — crontab.dwk.io
+sites/thekeithfamily.us/         Family site — thekeithfamily.us
+sites/davidandshawna.us/         Family site — davidandshawna.us
 ```
 
 ## Setup
@@ -19,7 +21,7 @@ Requires Node 22+ (see `.nvmrc`).
 npm install
 ```
 
-This installs all dependencies for all sites and the shared package via npm workspaces.
+This installs all dependencies for all sites and the shared package via npm workspaces. Sites can also install `@dwk/eleventy-shared` from npm for standalone development.
 
 ## Development
 
@@ -42,7 +44,7 @@ npm run build       # Production build
 
 ## Shared Package
 
-`@dwk/eleventy-shared` provides three entry points:
+[`@dwk/eleventy-shared`](https://www.npmjs.com/package/@dwk/eleventy-shared) is published on npm and provides three entry points:
 
 - **Eleventy plugin** (`@dwk/eleventy-shared`) — virtual templates for `.well-known/gpc.json`, `security.txt`, `sitemap.xml`, `humans.txt`, `robots.txt`, and `404.html`, plus opt-in templates for `webfinger`, `host-meta`, `nostr.json`, `did.json`, `atproto-did`, and `dnt-policy.txt`. Config includes TypeScript extensions, HTML minification, date filters, shortcodes, and CSS/JS bundles.
 - **Worker utilities** (`@dwk/eleventy-shared/worker`) — common security headers, redirect handling, path matching, and `createWorkerHandler()` factory for standard Worker request pipelines.
