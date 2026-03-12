@@ -1,6 +1,6 @@
 {
   "name": "@dwk/eleventy-shared",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Shared Eleventy plugin, Cloudflare Worker utilities, and post-build tools",
   "type": "module",
   "exports": {
